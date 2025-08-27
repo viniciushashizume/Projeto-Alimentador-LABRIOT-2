@@ -1,3 +1,4 @@
+/* src/index.css */
 body {
   margin: 0;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,11 +16,12 @@ body {
   --sidebar-text-light: #555;
   --sidebar-hover-light: #eef2f5;
 
-  --background-dark: #1a1a2e;
+  /* Paleta Dark Mode atualizada para tons de preto */
+  --background-dark: #121212; /* Fundo principal quase preto */
   --text-dark: #e0e0e0;
-  --sidebar-bg-dark: #162447;
+  --sidebar-bg-dark: #1E1E1E; /* Cor dos painéis, como sidebar e cards */
   --sidebar-text-dark: #e0e0e0;
-  --sidebar-hover-dark: #1f4068;
+  --sidebar-hover-dark: #333333; /* Cor para hover e bordas */
 }
 
 body.light {

@@ -15,7 +15,7 @@
 
 .dark .sidebar {
   background-color: var(--sidebar-bg-dark);
-  border-right: 1px solid #2c3e50;
+  border-right: 1px solid var(--sidebar-hover-dark); /* Borda ajustada */
 }
 
 .sidebar-header {
@@ -27,7 +27,7 @@
 }
 
 .dark .sidebar-header {
-  border-bottom: 1px solid #2c3e50;
+  border-bottom: 1px solid var(--sidebar-hover-dark); /* Borda ajustada */
 }
 
 .sidebar-title {
@@ -90,7 +90,7 @@
 
 .dark .sidebar ul li a:hover, .dark .sidebar ul li a.active {
     background-color: var(--sidebar-hover-dark);
-    color: #3498db;
+    color: #3498db; /* Cor de destaque mantida para contraste */
 }
 
 .link-icon {

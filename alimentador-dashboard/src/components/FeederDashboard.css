@@ -10,7 +10,7 @@
 }
 
 .dark .dashboard-container {
-  background-color: #162447;
+  background-color: var(--sidebar-bg-dark); /* Cor de painel consistente */
   color: #e0e0e0;
 }
 
@@ -45,8 +45,8 @@
 }
 
 .dark .gauge-body {
-    background-color: #34495e;
-    border-color: #2c3e50;
+    background-color: #333333; /* Fundo do medidor ajustado */
+    border-color: #2b2b2b; /* Borda do medidor ajustada */
 }
 
 .gauge-fill {
@@ -75,7 +75,7 @@
 }
 
 .dark .dashboard-info h2 {
-    color: #3498db;
+    color: #3498db; /* Cor de destaque mantida */
 }
 
 .dashboard-info p {
@@ -109,8 +109,8 @@
 }
 
 .dark .theme-toggle-button {
-  background-color: #34495e;
-  border-color: #2c3e50;
+  background-color: #333333;
+  border-color: #444444;
 }
 
 .theme-icon {

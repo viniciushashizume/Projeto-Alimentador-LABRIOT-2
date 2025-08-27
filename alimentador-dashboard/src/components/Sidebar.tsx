@@ -34,6 +34,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleSidebar }) => {
             <span className="link-text">Análises</span>
           </NavLink>
         </li>
+          <li>
+          <NavLink to="/about">
+            <span className="link-icon">S</span>
+            <span className="link-text">Sobre</span>
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
