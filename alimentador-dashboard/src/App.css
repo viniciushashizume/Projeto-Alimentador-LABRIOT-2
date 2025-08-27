@@ -1,7 +1,12 @@
 .App {
-  text-align: center;
+  display: flex;
 }
 
+.content {
+  margin-left: 250px; /* Mesma largura do sidebar */
+  padding: 20px;
+  width: 100%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +41,4 @@
     transform: rotate(360deg);
   }
 }
+

@@ -19,7 +19,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  // useMemo para evitar recriações desnecessárias do objeto de valor
   const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
 
   return (
