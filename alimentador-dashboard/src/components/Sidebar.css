@@ -1,42 +1,133 @@
 /* src/components/Sidebar.css */
 .sidebar {
   width: 250px;
-  background-color: #2c3e50;
-  color: #ecf0f1;
+  background-color: var(--sidebar-bg-light);
   display: flex;
   flex-direction: column;
-  padding: 20px;
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-right: 1px solid #e0e0e0;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+.dark .sidebar {
+  background-color: var(--sidebar-bg-dark);
+  border-right: 1px solid #2c3e50;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dark .sidebar-header {
+  border-bottom: 1px solid #2c3e50;
 }
 
 .sidebar-title {
-  text-align: center;
-  margin-bottom: 30px;
+  margin: 0;
   font-size: 1.5em;
+  font-weight: 600;
+  color: var(--sidebar-text-light);
+  transition: opacity 0.3s ease;
+}
+
+.dark .sidebar-title {
+    color: var(--sidebar-text-dark);
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--sidebar-text-light);
+    margin: 4px 0;
+    transition: all 0.3s;
+}
+
+.dark .hamburger-icon span {
+    background-color: var(--sidebar-text-dark);
 }
 
 .sidebar ul {
   list-style-type: none;
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
 }
 
-.sidebar ul li {
-  padding: 15px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.sidebar ul li:hover {
-  background-color: #34495e;
-}
-
 .sidebar ul li a {
-  color: #ecf0f1;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: var(--sidebar-text-light);
   text-decoration: none;
-  display: block;
   font-size: 1.1em;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.dark .sidebar ul li a {
+    color: var(--sidebar-text-dark);
+}
+
+.sidebar ul li a:hover, .sidebar ul li a.active {
+  background-color: var(--sidebar-hover-light);
+  color: #2980b9;
+}
+
+.dark .sidebar ul li a:hover, .dark .sidebar ul li a.active {
+    background-color: var(--sidebar-hover-dark);
+    color: #3498db;
+}
+
+.link-icon {
+  font-weight: bold;
+  margin-right: 15px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.link-text {
+  transition: opacity 0.2s ease;
+}
+
+/* Estilos para o sidebar recolhido */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .sidebar-title, .sidebar.collapsed .link-text {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+}
+
+.sidebar.collapsed .toggle-btn {
+    position: absolute;
+    right: 15px;
+}
+
+.sidebar.collapsed ul li a {
+  justify-content: center;
+}
+
+.sidebar.collapsed .link-icon {
+  margin-right: 0;
 }

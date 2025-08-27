@@ -1,15 +1,18 @@
+/* src/App.css */
 .App {
   display: flex;
+  transition: margin-left 0.3s ease;
 }
 
 .content {
-  margin-left: 250px; /* Mesma largura do sidebar */
-  padding: 20px;
+  margin-left: 250px; /* Largura do sidebar expandido */
+  padding: 30px;
   width: 100%;
+  transition: margin-left 0.3s ease;
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.content.sidebar-collapsed {
+  margin-left: 80px; /* Largura do sidebar recolhido */
 }
 
 @media (prefers-reduced-motion: no-preference) {
