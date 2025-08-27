@@ -1,38 +1,37 @@
 // src/components/FeederDashboard.tsx
 import React, { useState, useEffect } from 'react';
 import { getLatestFeederData, FeederData } from '../services/api';
-import './FeederDashboard.css'; // Criaremos este arquivo para o estilo
+import { useTheme } from '../contexts/ThemeContext';
+import './FeederDashboard.css';
+
+// Importe os ícones
+import sunIcon from '../assets/sun-icon.png'; // Caminho para o ícone do sol
+import moonIcon from '../assets/moon-icon.png'; // Caminho para o ícone da lua
 
 const FeederDashboard: React.FC = () => {
-  // Estado para armazenar os dados do alimentador
+  const { theme, toggleTheme } = useTheme();
   const [feederData, setFeederData] = useState<FeederData | null>(null);
-  // Estado para controlar o carregamento
   const [loading, setLoading] = useState<boolean>(true);
-  // Estado para armazenar mensagens de erro
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
-      setError(null); // Limpa erros anteriores
+      setError(null);
       const data = await getLatestFeederData();
       setFeederData(data);
     } catch (err) {
       setError("Falha ao carregar dados. Verifique se a API está no ar.");
+      setFeederData({ distance: 0, tempo: new Date().toISOString() });
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    // Busca os dados assim que o componente é montado
     fetchData();
-
-    // Configura um intervalo para atualizar os dados a cada 5 segundos
-    const intervalId = setInterval(fetchData, 5000); // 5000 ms = 5s
-
-    // Função de limpeza que será executada quando o componente for desmontado
+    const intervalId = setInterval(fetchData, 5000);
     return () => clearInterval(intervalId);
-  }, []); // O array vazio [] garante que o efeito rode apenas uma vez (na montagem)
+  }, []);
 
   const getLevelMessage = (percentage: number) => {
     if (percentage > 75) return "Nível de Ração: Alto";
@@ -44,17 +43,24 @@ const FeederDashboard: React.FC = () => {
   if (loading) {
     return <div className="dashboard-container"><h1>Carregando...</h1></div>;
   }
-
-  if (error) {
-    return <div className="dashboard-container error"><h1>Erro</h1><p>{error}</p></div>;
-  }
   
-  // A variável 'distance' do seu código representa a porcentagem
   const percentage = feederData ? Math.round(feederData.distance) : 0;
   const lastUpdate = feederData ? new Date(feederData.tempo).toLocaleString('pt-BR') : 'N/A';
 
+  const dashboardClassName = `dashboard-container ${theme}`;
+
   return (
-    <div className="dashboard-container">
+    <div className={dashboardClassName}>
+      <button onClick={toggleTheme} className="theme-toggle-button">
+        {/* Renderiza o ícone apropriado com base no tema atual */}
+        <img 
+          src={theme === 'light' ? moonIcon : sunIcon} 
+          alt={theme === 'light' ? 'Mudar para tema escuro' : 'Mudar para tema claro'} 
+          className="theme-icon"
+        />
+      </button>
+      
+      {error && <div className="error-message">{error}</div>}
       <h1 className="dashboard-title">Dashboard do Alimentador</h1>
       <div className="gauge-container">
         <div className="gauge-body">

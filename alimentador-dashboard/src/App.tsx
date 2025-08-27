@@ -1,13 +1,16 @@
 // src/App.tsx
 import React from 'react';
 import FeederDashboard from './components/FeederDashboard';
-import './App.css'; // Pode manter ou remover, dependendo se quer usar estilos globais
+import { ThemeProvider } from './contexts/ThemeContext';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <FeederDashboard />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <FeederDashboard />
+      </div>
+    </ThemeProvider>
   );
 }
 
