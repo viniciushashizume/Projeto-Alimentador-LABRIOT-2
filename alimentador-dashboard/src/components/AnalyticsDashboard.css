@@ -2,3 +2,40 @@
 .analytics-container {
   padding: 20px;
 }
+
+.analysis-menu {
+  margin-bottom: 20px;
+}
+
+.analysis-menu button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.analysis-menu button:hover {
+  background-color: #e0e0e0;
+}
+
+.analysis-menu button.active {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.analysis-content {
+  margin-top: 20px;
+}
+
+.analysis-image {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

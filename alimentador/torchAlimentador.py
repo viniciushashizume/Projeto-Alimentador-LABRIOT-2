@@ -25,5 +25,5 @@ plt.xticks(rotation=90)  # Melhor visualização
 plt.grid()
 
 plt.tight_layout()
-plt.savefig('leituras_por_data_horario.png')
+plt.savefig('alimentador-dashboard/src/assets/leiturasTorch.png')
 plt.show()
