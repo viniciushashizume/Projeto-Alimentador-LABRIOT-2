@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
-import torch
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.cluster import DBSCAN
+from sklearn.metrics import silhouette_score
+import os
 
 try:
     df = pd.read_csv('sensor_data.csv', parse_dates=['tempo'])
@@ -31,6 +32,15 @@ df['cluster'] = clusters
 print(f"\nClusters encontrados: {np.unique(clusters)}")
 refeicoes_df = df[df['cluster'] != -1]
 
+# Calcule o Silhouette Score apenas para os pontos clusterizados
+# (removendo os pontos de ruído com cluster_id -1)
+if len(np.unique(refeicoes_df['cluster'])) > 1:
+    silhouette_avg = silhouette_score(refeicoes_df[['minuto_do_dia']], refeicoes_df['cluster'])
+    print(f"\nCoeficiente de Silhueta (Silhouette Score): {silhouette_avg:.4f}")
+else:
+    print("\nNão há clusters suficientes para calcular o Coeficiente de Silhueta.")
+
+
 print("\nAnálise dos horários de refeição encontrados:")
 # Para cada cluster (refeição), calcular a hora de início, fim e o centro
 for cluster_id in sorted(refeicoes_df['cluster'].unique()):
@@ -43,9 +53,9 @@ for cluster_id in sorted(refeicoes_df['cluster'].unique()):
     # Contagem de leituras
     count = len(cluster_data)
     
-    print(f"  -> Refeição (Cluster {cluster_id}):")
-    print(f"     - Aproximadamente às {hora_media}")
-    print(f"     - {count} leituras do sensor agrupadas.")
+    print(f"  -> Refeição (Cluster {cluster_id}):")
+    print(f"     - Aproximadamente às {hora_media}")
+    print(f"     - {count} leituras do sensor agrupadas.")
 
 
 # Visualização dos clusters ao longo dos dias
@@ -62,5 +72,7 @@ plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.legend(title='Cluster de Refeição\n(-1 = Ruído)')
 
 plt.tight_layout()
-plt.savefig('alimentador-dashboard/src/assets/leituraDBSCAN.png')
-plt.show()
+output_dir = 'alimentador-dashboard/src/assets'
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+plt.savefig(os.path.join(output_dir, 'leituraDBSCAN.png'))

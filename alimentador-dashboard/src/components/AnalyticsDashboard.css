@@ -39,3 +39,89 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+/* Estilos para a seção de resultados do DBSCAN */
+.dbscan-results-container {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid;
+}
+
+.result-item:last-of-type {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.value {
+  font-weight: 700;
+}
+
+.value.score {
+  color: #3498db;
+}
+
+.analysis-subtitle {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+}
+
+.cluster-details {
+  margin-bottom: 15px;
+}
+
+.cluster-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.cluster-details ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.cluster-details li {
+  margin-bottom: 5px;
+}
+
+/* Estilos para o Tema Claro */
+body.light .dbscan-results-container {
+  background-color: #f4f7f6;
+  border: 1px solid #e1e1e1;
+}
+
+body.light .result-item,
+body.light .analysis-subtitle {
+  border-color: #e0e0e0;
+}
+
+/* Estilos para o Tema Escuro */
+body.dark .dbscan-results-container {
+  background-color: var(--sidebar-bg-dark);
+  border: 1px solid var(--sidebar-hover-dark);
+  color: var(--text-dark);
+}
+
+body.dark .result-item,
+body.dark .analysis-subtitle {
+  border-color: var(--sidebar-hover-dark);
+}
+
+body.dark .value.score {
+  color: #5dade2; /* Tom mais claro de azul para o tema escuro */
+}
