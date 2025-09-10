@@ -29,9 +29,9 @@ const participants = [
 const About: React.FC = () => {
   return (
     <div className="about-container">
-      <h1 className="about-title">Sobre o Projeto "Alimentando Quatro Patas"</h1>
+      <h1 className="about-title">Sobre o Projeto</h1>
       <p className="about-description">
-        O projeto "Alimentando Quatro Patas" é uma iniciativa direcionada à criação de uma ferramenta digital com o propósito de simplificar a verificação do nível de ração nos comedouros utilizados para alimentar os cachorros na Universidade Tecnológica Federal do Paraná.
+        O projeto é uma iniciativa direcionada à criação de uma ferramenta digital com o propósito de simplificar a verificação do nível de ração nos comedouros utilizados para alimentar os cachorros na Universidade Tecnológica Federal do Paraná.
       </p>
       <p className="about-description">
         Através de um microcontrolador ESP 8266 e um sensor de distância ultrassônico HC-SR04, o sistema foi projetado para fornecer suporte aos responsáveis pelo abastecimento dos comedouros, oferecendo uma interface intuitiva que exibe a quantidade de ração disponível em porcentagem.

@@ -20,7 +20,7 @@ const FeederDashboard: React.FC = () => {
       const data = await getLatestFeederData();
       setFeederData(data);
     } catch (err) {
-      setError("Falha ao carregar dados. Verifique se a API está no ar.");
+      setError("Falha ao carregar dados.");
       setFeederData({ distance: 0, tempo: new Date().toISOString() });
     } finally {
       setLoading(false);
@@ -37,7 +37,7 @@ const FeederDashboard: React.FC = () => {
     if (percentage > 75) return "Nível de Ração: Alto";
     if (percentage > 40) return "Nível de Ração: Médio";
     if (percentage > 15) return "Nível de Ração: Baixo";
-    return "Nível de Ração: Crítico! Reabasteça.";
+    return "Falha ao conectar a API";
   };
 
   if (loading) {

@@ -15,7 +15,7 @@ const AnalyticsDashboard: React.FC = () => {
     if (selectedAnalysis === 'dbscan') {
       return (
         <div className="dbscan-results-container">
-          <h3>Análise Detalhada do Cluster DBSCAN</h3>
+          <h3>Análise do DBSCAN</h3>
           <div className="result-item">
             <span className="label">Clusters encontrados:</span>
             <span className="value">[-1  0  1  2]</span>
