@@ -36,7 +36,7 @@ const FeederDashboard: React.FC = () => {
   const getLevelMessage = (percentage: number) => {
     if (percentage > 75) return "Nível de Ração: Alto";
     if (percentage > 40) return "Nível de Ração: Médio";
-    if (percentage > 15) return "Nível de Ração: Baixo";
+    if (percentage > 0) return "Nível de Ração: Baixo";
     return "Falha ao conectar a API";
   };
 
